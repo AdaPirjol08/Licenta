@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Library</title>
+    <title>My songs</title>
     
-
     <!-- Link to Custom CSS -->
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 <body class="bg-dark text-light">
     <div class="container py-5">
-        <h1 class="text-center mb-4">🎶 My Song Library</h1>
-        
+    
+        <h1 class="text-center mb-4">🎶 My Song Library 🎶 </h1>
 
-        <div class="container">
-            <a href="/add" class="btn btn-pink btn-sm">Add Song</a>
+        <div class="d-flex justify-content-between mb-4">
+            {% if current_user.is_authenticated %}
+             {% if current_user.is_admin %}
+                        <a href="{{ url_for('add_song') }}" class="btn btn-pink btn-sm">Add Song</a>
+                    {% endif %}
+                <div>
+                    <p style="display: inline;"
+                    class="mb-0">Logged in as: {{ current_user.username }}</p>
+                    <!-- Add Song Button (only visible to admin) -->
+                   
+                    <!-- Logout Button -->
+                    <a href="{{ url_for('logout') }}" class="btn btn-pink btn-sm ms-2">Logout</a>
+                </div>
+            {% else %}
+                <div>
+                    <!-- Login and Register Buttons (for non-authenticated users) -->
+                    <a href="{{ url_for('login') }}" class="btn btn-pink btn-sm">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-pink btn-sm ms-2">Register</a>
+                </div>
+            {% endif %}
         </div>
-        
-        
+
         <div class="table-responsive">
             <table class="table table-dark table-hover align-middle">
                 <thead class="table-pink">
@@ -33,7 +49,6 @@
                 </thead>
                 
                 <tbody>
-                    
                     {% for song in songs %}
                     <tr>
                         <td>{{ loop.index }}</td>
@@ -42,12 +57,14 @@
                         <td>{{ song.genre }}</td>
                         <td>
                             <audio controls class="audio-control">
-                                <source src="/static/uploads/{{ song.file_path }}" type="audio/mpeg">
+                                <source src="{{ url_for('static', filename='uploads/' + song.file_path) }}" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>
                         </td>
                         <td>
-                            <a href="/delete_song/{{ song.id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            {% if current_user.is_authenticated and current_user.is_admin %}
+                                <a href="{{ url_for('delete_song', song_id=song.id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
@@ -58,5 +75,6 @@
     
     <!-- Include Bootstrap JS (optional, for future interactivity) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
