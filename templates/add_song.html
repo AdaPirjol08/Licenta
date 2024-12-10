@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Song</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Song</h2>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="Song Title" required>
+            <input type="text" name="artist" placeholder="Artist" required>
+            <input type="text" name="genre" placeholder="Genre" required>
+            <input type="text" name="file_path" placeholder="File Path" required>
+            <button type="submit">Add Song</button>
+        </form>
+        <a href="/" class="back-btn">Back to Song List</a>
+    </div>
+</body>
+</html>
