@@ -1,218 +1,229 @@
-/* General Theme */
+/* 🎨 General Page Styling */
 body {
-    background-color: #121212; /* Dark Spotify-like background */
-    color: #f5f5f5; /* Light text */
-    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: white;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
-h1 {
-    color: #ff69b4; /* Pink for headings */
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Table Styling */
-.table-dark {
-    background-color: #1e1e1e; /* Table background */
-    color: #f5f5f5; /* Default text color for table cells */
-    width: 100%; /* Make sure the table takes up full width */
-    border-collapse: collapse; /* Collapse borders between cells */
-}
-
-.table-dark thead th {
-    background-color: #1e1e1e; /* Dark background for header */
-    color: #ffffff !important; /* Light text for headers */
-    font-weight: bold; /* Make header text bold */
-    text-transform: uppercase; /* Capitalize header text */
-    border-bottom: 2px solid #ff69b4; /* Pink underline */
-    padding: 15px 25px; /* Increased padding to create more space between columns */
-}
-
-.table-dark tbody td {
-    padding: 12px 25px; /* Added more padding between table cells */
-}
-
-.table-dark thead th:hover {
-    background-color: #333333; /* Slightly lighter on hover */
-    color: #ff69b4; /* Pink text on hover */
-}
-
-.table-dark tbody tr:hover {
-    background-color: #333333; /* Highlight row on hover */
-}
-
-/* Buttons */
-.btn-pink {
-    background-color: #ff69b4; /* Pink button background */
-    color: #121212; /* Dark text */
-    border: none;
-    font-weight: bold; /* Bold text */
-    text-transform: uppercase; /* Capitalize text */
-    padding: 0.3rem 0.6rem; /* Smaller padding for reduced size */
-    font-size: 0.85rem; /* Smaller font size */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s;
-}
-
-a.btn-pink {
-    margin-bottom: 20px; /* Add space below the button */
-}
-
-.btn-pink:hover {
-    background-color: #ff85c1; /* Lighter pink on hover */
-    color: #000; /* Black text on hover */
-}
-
-.btn-outline-danger {
-    color: #ff69b4; /* Pink text */
-    border: 2px solid #ff69b4; /* Pink border */
-    background-color: transparent; /* Transparent background */
-    font-weight: bold; /* Bold text for emphasis */
-    padding: 0.3rem 0.6rem; /* Smaller padding for compact size */
-    font-size: 0.85rem; /* Consistent with the Add Song button */
-    border-radius: 5px; /* Rounded corners for aesthetics */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.btn-outline-danger:hover {
-    background-color: #ff69b4; /* Pink background on hover */
-    color: #121212; /* Dark text on hover */
-    border-color: #ff85c1; /* Lighter pink border on hover */
-}
-
-/* Audio Player */
-.audio-control {
-    width: 100%; /* Make audio player full-width */
-    background-color: #1e1e1e; /* Match dark theme */
-    border-radius: 5px; /* Rounded corners */
-}
-
-/* Optional: Additional Styling for Page Layout */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-
-a {
-    color: #ff69b4;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: #ff85c1;
-}
-
-/* Footer or Additional Elements */
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    color: #ff69b4;
-    font-size: 0.9rem;
-    background-color: #1e1e1e;
-}
-
-/* Form and Add Song Page */
-.form-container {
+/* 🎵 Sidebar */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #181818;
+    padding: 15px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    border-right: 2px solid #CD7BE6;
+}
+
+.sidebar h3 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* 📂 Playlist Form */
+.playlist-form {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.playlist-form input {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.playlist-form button {
+    font-size: 12px;
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #CD7BE6;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.playlist-form button:hover {
+    background-color: #b369cf;
+}
+
+/* 📂 Playlist List */
+.list-group-item {
+    background: none;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    color: #ccc;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.list-group-item.active {
+    background-color: #CD7BE6 !important;
+    color: white;
+    font-weight: bold;
+}
+
+/* 🎵 Main Content (Prevents Overlap) */
+.main-content {
+    margin-left: 250px; /* Adjust to match sidebar width */
+    padding: 20px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+}
+
+/* 🎬 Video Display */
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.video-card {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(205, 123, 230, 0.6);
+}
+
+.video-card img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.video-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    color: #CD7BE6;
+}
+
+/* 🎬 Cinema Mode */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full viewport height */
+}
+
+.video-container {
+    position: relative;
+    background: #000;
     padding: 20px;
+    border-radius: 10px;
 }
 
-.form-container form {
-    background-color: #1a1a1a; /* Dark gray background for the form */
-    padding: 40px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 400px; /* Max width for the form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between input fields */
-}
-
-.form-container input {
-    width: 100%;
-    padding: 12px;
-    background-color: #333; /* Dark background for input fields */
-    color: #fff; /* White text for input fields */
-    border: 1px solid #ff69b4; /* Pink border for input fields */
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-container input:focus {
-    outline: none;
-    border-color: #ff85c1; /* Lighter pink when input is focused */
-}
-
-.form-container button {
-    padding: 12px;
-    background-color: #ff69b4; /* Pink background */
-    color: #121212; /* Dark text */
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.form-container button:hover {
-    background-color: #ff85c1; /* Lighter pink on hover */
+.close:hover {
+    color: red;
 }
 
-.form-container h2 {
-    color: #ff69b4; /* Pink color for the title */
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+/* 🎼 Playlist Table */
+.table-dark {
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.back-btn {
-    color: #ff69b4; /* Pink color for the back button */
-    text-decoration: none;
-    font-size: 1rem;
-    margin-top: 20px;
-    display: inline-block;
+.table-primary {
+    background-color: #CD7BE6 !important;
+    color: white;
 }
 
-.back-btn:hover {
-    text-decoration: underline;
+/* 🔹 Logout Button Styling */
+.logout-container {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1000; /* Ensures it's above all other elements */
 }
 
-/* Optional: Align buttons */
-.d-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logout-container .btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #e63946;
+    border: none;
+    transition: background 0.3s ease;
 }
 
-.ms-auto {
-    margin-left: auto;
+.logout-container .btn:hover {
+    background-color: #c92c3e;
 }
 
-.alert {
-    padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    font-size: 16px;
+/* 🔹 Remove Button */
+.remove-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    margin-top: 5px;
 }
 
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border-color: #c3e6cb;
+.remove-btn:hover {
+    background-color: #c92c3e;
 }
 
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border-color: #f5c6cb;
+/* 🔹 Delete Playlist Button */
+.delete-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
 }
 
+.delete-btn:hover {
+    background-color: #c92c3e;
+}
+
+/* 🔹 Align Delete Button */
+.delete-form {
+    margin-left: 8px;
+}

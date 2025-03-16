@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-free-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "true"  # Allows multiple services on the same IP
+spec:
+  selector:
+    user-tier: free
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer

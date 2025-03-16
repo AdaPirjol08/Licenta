@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Search Results</title>
+</head>
+<body>
+    <h1>YouTube Search Results</h1>
+    <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Search YouTube">
+        <button type="submit">Search</button>
+    </form>
+    <hr>
+
+    {% for video in videos %}
+        <div>
+            <h3>{{ video.snippet.title }}</h3>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/{{ video.id.videoId }}"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+    {% endfor %}
+</body>
+</html>

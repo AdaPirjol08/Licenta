@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-premium-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "true"
+    haproxy.org/load-balance: "leastconn"  # Least connections balancing
+spec:
+  selector:
+    user-tier: premium
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
